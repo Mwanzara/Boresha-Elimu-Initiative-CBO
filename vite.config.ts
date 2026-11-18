@@ -1,0 +1,19 @@
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
+
+const rootDir = dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  base: './',
+  plugins: [tailwindcss()],
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+  build: {
+    outDir: resolve(rootDir, 'dist'),
+    assetsInlineLimit: 0,
+  },
+});
